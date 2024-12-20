@@ -1,0 +1,17 @@
+{
+  "name": "cucumber-testing",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Loc Ho",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.1.1"
+  },
+  "dependencies": {
+    "selenium-webdriver": "^4.27.0"
+  }
+}

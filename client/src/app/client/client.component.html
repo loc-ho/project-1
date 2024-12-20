@@ -1,0 +1,78 @@
+<h1>Create a Client</h1>
+<br>
+<p>Please fill in this form to create a client</p>
+<br>
+<nav>
+  <a routerLink="/scheduling">Client Scheduling</a>
+</nav>
+<body>
+  <form [formGroup]="clientForm" (ngSubmit)="onSubmit()" class="form-container">
+    <!-- Name Field -->
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input id="name" formControlName="name" type="text" placeholder="Enter your name" />
+      <div *ngIf="clientForm.get('name')?.touched && clientForm.get('name')?.invalid">
+        <small *ngIf="clientForm.get('name')?.errors?.['required']">Name is required.</small>
+      </div>
+    </div>
+
+    <!-- Email Field -->
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" type="email" placeholder="Enter your email" />
+      <div *ngIf="clientForm.get('email')?.touched && clientForm.get('email')?.invalid">
+        <small *ngIf="clientForm.get('email')?.errors?.['required']">Email is required.</small>
+        <small *ngIf="clientForm.get('email')?.errors?.['email']">Enter a valid email address.</small>
+      </div>
+    </div>
+
+    <!-- Address Field -->
+    <div class="form-group">
+      <label for="address">Address:</label>
+      <input id="address" formControlName="address" type="text" placeholder="Enter your address" />
+    </div>
+
+    <!-- Password Field -->
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input id="password" formControlName="password" type="password" placeholder="Enter your password" />
+      <div *ngIf="clientForm.get('password')?.touched && clientForm.get('password')?.invalid">
+        <small *ngIf="clientForm.get('password')?.errors?.['required']">Password is required.</small>
+        <small *ngIf="clientForm.get('password')?.errors?.['minlength']">
+          Password must be at least 8 characters.
+        </small>
+        <small *ngIf="clientForm.get('password')?.errors?.['pattern']">
+          Password must include uppercase, lowercase, and a number.
+        </small>
+      </div>
+    </div>
+
+    <!-- Repeat Password Field -->
+    <div class="form-group">
+      <label for="confirmPassword">Repeat Password:</label>
+      <input
+        id="confirmPassword"
+        formControlName="confirmPassword"
+        type="password"
+        placeholder="Repeat your password"
+      />
+      <!-- Validation Error -->
+      <div
+        *ngIf="clientForm.get('confirmPassword')?.hasError('passwordMismatch') && clientForm.get('confirmPassword')?.touched"
+      >
+        <span style="color: red;">Passwords do not match</span>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button id="submit" type="submit" [disabled]="clientForm.invalid" class="submit-btn">Register</button><br>
+
+    <b>Client List</b>
+    <ul>
+      <li *ngFor="let client of clients">
+        {{client.name}} {{client.email}}
+      </li>
+    </ul>
+
+
+
