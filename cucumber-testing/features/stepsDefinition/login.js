@@ -21,10 +21,10 @@ When ("I click on the register button for success", async function(){
     await button1.click();
 });
 
-Then("I should be redirected to home page", async function() {
+Then("I should be redirected to client page", async function() {
     await driver.wait(until.urlContains(''), 4000); 
     const currentURL = await driver.getCurrentUrl();
-    assert.ok(currentURL.endsWith('/')); 
+    assert.ok(currentURL.endsWith('')); 
 });
 
 When ("I enter invalid email and password", async function(){
