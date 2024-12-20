@@ -4,10 +4,11 @@ import { ClientComponent } from './client/client.component';
 import { SchedulingComponent } from './scheduling/scheduling.component';
 import { AppComponent } from './app.component';
 const routes: Routes = [
-  {path:'', component:AppComponent},
-  {path: "client", component: ClientComponent},
-  {path: "scheduling", component: SchedulingComponent},
+  { path: '', redirectTo: 'client', pathMatch: 'full' },
+  { path: 'client', component: ClientComponent },
+  { path: 'scheduling', component: SchedulingComponent },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
